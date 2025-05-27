@@ -1,0 +1,8 @@
+此仓库用于存放控制步进电机的代码，其中步进电机为42步进电机，其他型号可以修改参数
+
+其中：
+StepMotor_control_Serial_speed 为通过串口控制单个电机旋转速度的代码，其可以用作控制恒定速度的实验；
+
+StepMotor_control_RC_angle 为通过RC遥控器直接控制角度的代码，其可以控制四个步进电机
+
+StepMotor_control_RC_speed 为通过RC遥控器直接控制速度的代码，其可以控制四个步进电机
