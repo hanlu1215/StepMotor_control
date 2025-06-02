@@ -26,8 +26,7 @@ AccelStepper stepper4(AccelStepper::DRIVER, M4_STEP_PIN, M4_DIR_PIN);
 // —————————— 参数设置 ——————————
 const int MICROSTEPS     = 8;
 const int STEPS_PER_REV  = 200 * MICROSTEPS;   // 1600 steps/rev
-const float MAX_RPM      = 480.0;              // 最大转速
-const float MAX_SPEED    = (MAX_RPM / 60.0) * STEPS_PER_REV;  // 6400 steps/sec
+const long MAX_SPEED    = (120L / 60) * STEPS_PER_REV;  // 6400 steps/sec
 
 // 死区设置
 const int DEADZONE_LOWER = 1490;
@@ -74,10 +73,11 @@ void loop() {
   stepper2.runSpeed();
   stepper3.runSpeed();
   stepper4.runSpeed();
+  
 }
 
 // 映射函数：将 iBus 通道值转换为速度（带死区）
-float mapWithDeadzone(uint16_t val) {
+long mapWithDeadzone(uint16_t val) {
   if (val < 1000 || val > 2000) return 0;
 
   if (val >= DEADZONE_LOWER && val <= DEADZONE_UPPER) return 0;
